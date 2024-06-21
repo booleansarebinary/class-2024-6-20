@@ -1,0 +1,41 @@
+---
+title: "Song Popularity vs. Duration"
+execute:
+  echo: false
+---
+ 
+```{r}
+#| message: false
+#| warning: false
+
+
+library(tidyverse)
+```
+ 
+```{r, output.hidden = TRUE}
+#| message: false
+#| warning: false
+
+
+songs <- read_csv("song_data.csv")
+print(songs)
+```
+ 
+```{r}
+#| message: false
+#| warning: false
+
+
+songs %>%
+  ggplot(aes(x = song_duration_ms, y = song_popularity, color = acousticness, size = danceability)) +
+  geom_point() +
+  labs(
+    title = "Song Popularity vs Duration",
+    x = "Duration",
+    y = "Popularity",
+    color = "Acousticness",
+    size = "Danceability"
+  )
+```
+ 
+ 
